@@ -7,16 +7,22 @@ public class NavigationController : MonoBehaviour
     public static NavigationController navigationController;
     public NavigationTile currentTile;
     public GameObject player;
+
+    private bool runOnce = true;
     // Start is called before the first frame update
     void Start()
     {
         navigationController = this;
-        EnableNextTileSelection(true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (runOnce) {
+            EnableNextTileSelection(true);
+            runOnce = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.A)) {
             GetNextTiles();
         }
@@ -33,7 +39,7 @@ public class NavigationController : MonoBehaviour
     private void EnableNextTileSelection(bool enable = true) {
         foreach (var nextTile in currentTile.nextTiles)
         {
-            nextTile.EnableSelection();
+            nextTile.EnableSelection(enable);
         }
     } 
 
