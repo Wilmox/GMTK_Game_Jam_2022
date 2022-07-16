@@ -158,6 +158,7 @@ MonoBehaviour:
   tileName: D
   nextTiles:
   - {fileID: 1299885713}
+  navigationTileType: 0
 --- !u!65 &17977452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -386,6 +387,7 @@ MonoBehaviour:
   tileName: 1
   nextTiles:
   - {fileID: 1019732515}
+  navigationTileType: 0
 --- !u!65 &398660276
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -499,6 +501,7 @@ MonoBehaviour:
   tileName: C
   nextTiles:
   - {fileID: 1164826705}
+  navigationTileType: 0
 --- !u!65 &617727496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -707,8 +710,9 @@ GameObject:
   - component: {fileID: 934851114}
   - component: {fileID: 934851113}
   - component: {fileID: 934851112}
+  - component: {fileID: 934851116}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,6 +796,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934851116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934851111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f7f2c5c8b91e64bb191fb6f1411b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddictionPercentage: 50
+  money: 100
 --- !u!1 &971215022
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971215024}
   - component: {fileID: 971215023}
+  - component: {fileID: 971215025}
   m_Layer: 0
   m_Name: Nav
   m_TagString: Untagged
@@ -838,6 +857,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &971215025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971215022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a6fdba1e2200942be7e9e0d628385f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 934851116}
 --- !u!1 &1019732514
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +906,7 @@ MonoBehaviour:
   nextTiles:
   - {fileID: 617727495}
   - {fileID: 17977451}
+  navigationTileType: 0
 --- !u!65 &1019732516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -986,6 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: E
   nextTiles: []
+  navigationTileType: 0
 --- !u!65 &1164826706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1098,6 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: F
   nextTiles: []
+  navigationTileType: 0
 --- !u!65 &1299885714
 BoxCollider:
   m_ObjectHideFlags: 0

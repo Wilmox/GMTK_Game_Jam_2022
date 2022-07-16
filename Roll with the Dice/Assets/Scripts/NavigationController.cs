@@ -7,12 +7,14 @@ public class NavigationController : MonoBehaviour
     public static NavigationController navigationController;
     public NavigationTile currentTile;
     public GameObject player;
+    private TileEventHandler tileEventHandler;
 
     private bool runOnce = true;
     // Start is called before the first frame update
     void Start()
     {
         navigationController = this;
+        tileEventHandler = gameObject.GetComponent<TileEventHandler>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class NavigationController : MonoBehaviour
     public void SetCurrentTile(NavigationTile navigationTile) {
         EnableNextTileSelection(false);
         currentTile = navigationTile;
+        tileEventHandler.HandleEvent(currentTile.navigationTileType);
         EnableNextTileSelection(true);
     }
 }
