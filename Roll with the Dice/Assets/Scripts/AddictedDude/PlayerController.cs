@@ -7,20 +7,22 @@ public class PlayerController : MonoBehaviour
 {
     public float AddictionPercentage = 100f;
     public float money = 100f;
-    public Slider addictionBar;
-    //public Image addictionBarCool;
+    //public Slider addictionBar;
+    public Image addictionBar;
     float addictionLevel, maxAddictionLevel = 100f;
     float moneyCountValue, maxMoneyCount = 1000;
     
     public Text moneyCountText;
     float lerpSpeed;
     Color addictionColor;
-
+    Color startColor;
     // Start is called before the first frame update
     void Start()
     {
         addictionLevel = maxAddictionLevel;
         moneyCountValue = maxMoneyCount;
+        
+        ColorUtility.TryParseHtmlString("#711CFD", out startColor);
     }
 
     // Update is called once per frame
@@ -30,8 +32,8 @@ public class PlayerController : MonoBehaviour
         if (addictionLevel > maxAddictionLevel) addictionLevel = maxAddictionLevel;
 
         lerpSpeed = 3f * Time.deltaTime;
-        addictionBar.value = Mathf.Lerp(addictionBar.value, addictionLevel / maxAddictionLevel, lerpSpeed);
-        //addictionBarCool.fillAmount = Mathf.Lerp(addictionBarCool.fillAmount, addictionLevel / maxAddictionLevel, lerpSpeed);
+        //addictionBar.value = Mathf.Lerp(addictionBar.value, addictionLevel / maxAddictionLevel, lerpSpeed);
+        addictionBar.fillAmount = Mathf.Lerp(addictionBar.fillAmount, addictionLevel / maxAddictionLevel, lerpSpeed);
         
         ChangeColors();
     }
@@ -69,8 +71,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void ChangeColors() {
-        Color addictionColor = Color.Lerp(Color.green, Color.magenta, (addictionLevel / maxAddictionLevel));
-        //addictionBarCool.color = addictionColor;
+        Color addictionColor = Color.Lerp(Color.green, startColor, (addictionLevel / maxAddictionLevel));
+        addictionBar.color = addictionColor;
         switch (moneyCountValue)
         {
             case < 0:
