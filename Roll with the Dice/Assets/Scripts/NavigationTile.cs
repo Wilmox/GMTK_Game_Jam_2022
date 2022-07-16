@@ -6,11 +6,10 @@ public class NavigationTile : MonoBehaviour
 {
     public string tileName = "Undefined name";
     public List<NavigationTile> nextTiles;
-    public NavigationTileType navigationTileType = NavigationTileType.Empty;
-    private Collider col;
+    public NavigationTileType navigationTileType = NavigationTileType.Random;
+    protected Collider col;
 
-    private Material mat;
-    private static int RandomNavigationTileTypeRange = 3;
+    protected Material mat;
     
     // Start is called before the first frame update
     void Start()
@@ -36,8 +35,8 @@ public class NavigationTile : MonoBehaviour
     }
 
     private void InitNavigationTileType() {
-        if (NavigationTileType.Empty.Equals(navigationTileType)) {
-            navigationTileType = (NavigationTileType)Random.Range(0, RandomNavigationTileTypeRange);
+        if (NavigationTileType.Random.Equals(navigationTileType)) {
+            navigationTileType = (NavigationTileType)Random.Range(0, System.Enum.GetValues(typeof(NavigationTileType)).Length - 2);
         }
         mat.SetTexture("_TileIcon", GameData.navigationTileIcons[(int)navigationTileType]);
     }
@@ -48,5 +47,6 @@ public enum NavigationTileType {
     GetMoney,
     LoseMoney,
     Chance,
-    GoTo
+    Random,
+    Custom
 }

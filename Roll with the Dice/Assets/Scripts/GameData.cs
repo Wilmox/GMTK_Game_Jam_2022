@@ -8,7 +8,6 @@ public class GameData : MonoBehaviour
 
     void Awake() {
         navigationTileIcons = Resources.LoadAll<Texture2D>("NavigationTileIcons");
-        Debug.Log(navigationTileIcons.Length);
     }
 
     // Start is called before the first frame update

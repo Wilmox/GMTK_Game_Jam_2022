@@ -17,8 +17,8 @@ public class TileEventHandler : MonoBehaviour
         
     }
 
-    public void HandleEvent(NavigationTileType tileType = NavigationTileType.Empty) {
-        switch (tileType)
+    public void HandleEvent(NavigationTile navigationTile) {
+        switch (navigationTile.navigationTileType)
         {
             case NavigationTileType.Empty:
                 break;
@@ -31,6 +31,9 @@ public class TileEventHandler : MonoBehaviour
             case NavigationTileType.Chance:
                 playerController.SetAddictionPercentage(playerController.AddictionPercentage + 10f);
                 playerController.money += Random.Range(-50f, 50f);
+                break;
+            case NavigationTileType.Custom:
+                ((NavigationTileCustom)navigationTile).CustomEvent();
                 break;
             default:
                 break;
