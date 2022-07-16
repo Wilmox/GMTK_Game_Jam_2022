@@ -52,7 +52,7 @@ public class NavigationController : MonoBehaviour
     public void SetCurrentTile(NavigationTile navigationTile) {
         EnableNextTileSelection(false);
         currentTile = navigationTile;
-        tileEventHandler.HandleEvent(currentTile.navigationTileType);
+        tileEventHandler.HandleEvent(currentTile);
         EnableNextTileSelection(true);
     }
 }
