@@ -30,12 +30,21 @@ public class Dice : MonoBehaviour
     }
 
     public void Roll(float forceStrength = 5, float torqueStrength = 2) {
+        rigy.constraints = RigidbodyConstraints.None;
         Vector3 forceImpulse = new Vector3(Random.Range(-1f, 1f), Random.Range(.5f, 1f), Random.Range(-1f, 1f)) * forceStrength;
         Vector3 torqueImpulse = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * torqueStrength;
         rigy.AddForce(forceImpulse, ForceMode.Impulse);
         rigy.AddTorque(torqueImpulse, ForceMode.Impulse);
         resulted = false;
         rerollTimer = -1f;
+    }
+
+    public void FreezePosition() {
+        rigy.constraints = RigidbodyConstraints.FreezePosition;
+    }
+
+    public void ApplyForce(Vector3 force) {
+        rigy.AddForce(force);
     }
 
     public int GetDiceResult() {

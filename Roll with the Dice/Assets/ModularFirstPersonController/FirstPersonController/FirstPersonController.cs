@@ -269,6 +269,8 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
+        Interact();
+
         #endregion
         #endregion
 
@@ -524,6 +526,17 @@ public class FirstPersonController : MonoBehaviour
             // Resets when play stops moving
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
+        }
+    }
+
+    private void Interact() {
+        if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out var HitInfo, 3.0f)) {
+            GameObject hitObject = HitInfo.collider.gameObject;
+            if (hitObject.TryGetComponent<Dice>(out Dice dice)) {
+                if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                    dice.GetComponent<Rigidbody>().AddForceAtPosition((HitInfo.point - playerCamera.transform.position) * 2, HitInfo.point, ForceMode.Impulse);
+                }
+            }
         }
     }
 }
