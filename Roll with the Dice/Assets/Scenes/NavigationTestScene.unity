@@ -957,6 +957,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTile: {fileID: 398660275}
   player: {fileID: 934851111}
+  moves: 0
+  playerReachedTile: 0
+  navigationState: 0
 --- !u!4 &971215024
 Transform:
   m_ObjectHideFlags: 0
@@ -1033,7 +1036,7 @@ MonoBehaviour:
   nextTiles:
   - {fileID: 617727495}
   - {fileID: 17977451}
-  navigationTileType: 4
+  navigationTileType: 3
 --- !u!65 &1019732516
 BoxCollider:
   m_ObjectHideFlags: 0

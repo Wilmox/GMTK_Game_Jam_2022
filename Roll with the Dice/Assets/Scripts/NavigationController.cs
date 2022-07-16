@@ -8,8 +8,12 @@ public class NavigationController : MonoBehaviour
     public NavigationTile currentTile;
     public GameObject player;
     private TileEventHandler tileEventHandler;
+    public int moves = 0;
 
-    private bool runOnce = true;
+    public Vector3 goToPosition;
+
+    public NavigationState navigationState = NavigationState.Init;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,22 +24,90 @@ public class NavigationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (runOnce) {
-            EnableNextTileSelection(true);
-            runOnce = false;
+        switch (navigationState)
+        {
+            case NavigationState.Init:
+                InitState();
+                break;
+            case NavigationState.StartMoving:
+                StartMovingState();
+                break;
+            case NavigationState.Moving:
+                MovingState();
+                break;
+            case NavigationState.ReachedTile:
+                ReachedTileState();
+                break;
+            case NavigationState.WaitForSelection:
+                WaitForSelectionState();
+                break;
+            case NavigationState.HandlingEvent:
+                HandlingEventState();
+                break;
+            case NavigationState.ContinueMoving:
+                ContinueMovingState();
+                break;
+            case NavigationState.OutOfMoves:
+                OutOfMovesState();
+                break;
+            case NavigationState.EndOfPath:
+                EndOfPathState();
+                break;
+            default:
+                break;
         }
-
-        if (Input.GetKeyDown(KeyCode.A)) {
-            GetNextTiles();
-        }
-        MovePlayer();
     }
 
-    private void GetNextTiles() {
-        foreach (var nextTile in currentTile.nextTiles)
-        {
-            Debug.Log(nextTile.tileName);
+    private void InitState() {
+        SetCurrentTile(currentTile);
+        navigationState = NavigationState.Moving;
+    }
+
+    private void StartMovingState() {
+        moves -=1;
+        navigationState = NavigationState.Moving;
+    }
+
+    private void MovingState() {
+        MovePlayer();
+        CheckIfPlayerReachedTile();
+    }
+
+    private void ReachedTileState() {
+        OnPlayerReachedTile();
+    }
+
+    private void WaitForSelectionState() {
+        EnableNextTileSelection(true);
+    }
+
+    private void HandlingEventState() {
+        tileEventHandler.HandleEvent(currentTile);
+        if (navigationState == NavigationState.HandlingEvent) {
+            Debug.Log("Test");
+            navigationState = NavigationState.ContinueMoving;
         }
+    }
+
+    private void ContinueMovingState() {
+        if (currentTile.nextTiles.Count == 1) {
+            SetCurrentTile(currentTile.nextTiles[0]);
+            navigationState = NavigationState.StartMoving;
+        } else if (currentTile.nextTiles.Count > 1) {
+            navigationState = NavigationState.WaitForSelection;
+        } else {
+            navigationState = NavigationState.EndOfPath;
+        }
+    }
+
+    private void OutOfMovesState() {
+        if (moves > 0) {
+            navigationState = NavigationState.ReachedTile;
+        }
+    }
+
+    private void EndOfPathState() {
+        Debug.Log("This is the end");
     }
 
     private void EnableNextTileSelection(bool enable = true) {
@@ -46,13 +118,43 @@ public class NavigationController : MonoBehaviour
     } 
 
     private void MovePlayer() {
-        player.transform.position = Vector3.Lerp(player.transform.position, currentTile.gameObject.transform.position + Vector3.up, 3f * Time.deltaTime);
+        player.transform.position = Vector3.Lerp(player.transform.position, goToPosition, 3f * Time.deltaTime);
+    }
+
+    private void CheckIfPlayerReachedTile() {
+        if (Vector3.Distance(player.transform.position, goToPosition) <= 0.1f) {
+            navigationState = NavigationState.ReachedTile;
+        }
     }
 
     public void SetCurrentTile(NavigationTile navigationTile) {
         EnableNextTileSelection(false);
         currentTile = navigationTile;
-        tileEventHandler.HandleEvent(currentTile);
-        EnableNextTileSelection(true);
+        goToPosition = currentTile.gameObject.transform.position + Vector3.up;
     }
+
+    public void SelectNextTile(NavigationTile navigationTile) {
+        SetCurrentTile(navigationTile);
+        navigationState = NavigationState.StartMoving;
+    }
+
+    public void OnPlayerReachedTile() {
+        if (moves == 0) {
+            navigationState = NavigationState.OutOfMoves;
+        } else if(moves > 0) {
+            navigationState = NavigationState.HandlingEvent;
+        }
+    }
+}
+
+public enum NavigationState {
+    Init,
+    StartMoving,
+    Moving,
+    ReachedTile,
+    WaitForSelection,
+    HandlingEvent,
+    ContinueMoving,
+    OutOfMoves,
+    EndOfPath,
 }

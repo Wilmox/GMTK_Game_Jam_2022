@@ -26,7 +26,7 @@ public class NavigationTile : MonoBehaviour
     }
 
     void OnMouseDown() {
-        NavigationController.navigationController.SetCurrentTile(this);
+        NavigationController.navigationController.SelectNextTile(this);
     }
 
     public void EnableSelection(bool enable = true) {
