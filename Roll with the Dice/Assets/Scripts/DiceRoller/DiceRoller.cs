@@ -27,6 +27,10 @@ public class DiceRoller : MonoBehaviour
             RollDices();
         }
 
+        if (Input.GetKey(KeyCode.R)) {
+            ReCollectDice();
+        }
+
         if (!resulted) {
             if (dices.TrueForAll(d => d.resulted)) {
                 int total = 0;
@@ -45,6 +49,17 @@ public class DiceRoller : MonoBehaviour
         foreach (var dice in dices)
         {
             dice.Roll();
+        }
+    }
+
+    public void ReCollectDice() {
+        foreach (var dice in dices)
+        {
+            if (Vector3.Distance(dice.transform.position, transform.position) > 4) {
+                dice.ApplyForce((transform.position - dice.transform.position) * Time.deltaTime * 200);
+            } else {
+                dice.FreezePosition();
+            }
         }
     }
 }
