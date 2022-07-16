@@ -5,6 +5,7 @@ using UnityEngine;
 public class DiceRoller : MonoBehaviour
 {
     public float diceCount= 2;
+    //public GameObject[] diceModels;
     public GameObject diceObject;
     public List<Dice> dices;
     public bool resulted = true;
@@ -14,6 +15,7 @@ public class DiceRoller : MonoBehaviour
     {
         for (int i = 0; i < diceCount; i++)
         {
+
             dices.Add(Instantiate(diceObject, transform.position + Random.insideUnitSphere * sphereSice, transform.rotation).GetComponent<Dice>());
         }
     }
