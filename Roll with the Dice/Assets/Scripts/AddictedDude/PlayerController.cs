@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimerController.instance.BeginTimer();
         addictionLevel = maxAddictionLevel;
         moneyCountValue = maxMoneyCount;
         
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         lerpSpeed = 3f * Time.deltaTime;
         //addictionBar.value = Mathf.Lerp(addictionBar.value, addictionLevel / maxAddictionLevel, lerpSpeed);
         addictionBar.fillAmount = Mathf.Lerp(addictionBar.fillAmount, addictionLevel / maxAddictionLevel, lerpSpeed);
+
         
         ChangeColors();
     }
