@@ -7,6 +7,7 @@ public class NavigationTileGoTo : NavigationTileCustom
     public NavigationTile goToNavigationTile;
 
     public override void CustomEvent() {
-        NavigationController.navigationController.SetCurrentTile(goToNavigationTile);
+        NavigationController.navigationController.moves += 1;
+        NavigationController.navigationController.SelectNextTile(goToNavigationTile);
     }
 }
