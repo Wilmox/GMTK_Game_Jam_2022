@@ -274,7 +274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &331066310
@@ -321,8 +321,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926834593}
-        m_TargetAssemblyTypeName: MoneyCount, Assembly-CSharp
+      - m_Target: {fileID: 926834588}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: increaseMoneyCount
         m_Mode: 4
         m_Arguments:
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Addiction ++
+  m_text: Addiction --
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -590,9 +590,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926834594}
-        m_TargetAssemblyTypeName: AddictionLevel, Assembly-CSharp
-        m_MethodName: decreaseAddictionLevel
+      - m_Target: {fileID: 926834588}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: increaseAddictionLevel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1297,6 +1297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AddictionPercentage: 100
   money: 100
+  addictionBar: {fileID: 1912212281}
+  moneyCountText: {fileID: 1764133836}
 --- !u!136 &926834589
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1383,7 +1385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926834587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c680e8442f857de48b35488c5489900b, type: 3}
   m_Name: 
@@ -1396,7 +1398,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926834587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 009e71ff01838e0448255d1e7d7ad508, type: 3}
   m_Name: 
@@ -1596,7 +1598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Addiction --
+  m_text: Addiction ++
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2356,9 +2358,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926834594}
-        m_TargetAssemblyTypeName: AddictionLevel, Assembly-CSharp
-        m_MethodName: increaseAddictionLevel
+      - m_Target: {fileID: 926834588}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: decreaseAddictionLevel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3092,7 +3094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2053158909
@@ -3139,8 +3141,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926834593}
-        m_TargetAssemblyTypeName: MoneyCount, Assembly-CSharp
+      - m_Target: {fileID: 926834588}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: decreaseMoneyCount
         m_Mode: 4
         m_Arguments:
