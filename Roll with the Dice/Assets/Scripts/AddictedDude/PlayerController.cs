@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     float moneyCountValue, maxMoneyCount = 1000;
     
     public Text moneyCountText;
+    public Text endScreenText;
     float lerpSpeed;
     Color addictionColor;
     Color startColor;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moneyCountText.text = moneyCountValue.ToString();
+        endScreenText.text = moneyCountValue.ToString();
         if (addictionLevel > maxAddictionLevel) addictionLevel = maxAddictionLevel;
 
         lerpSpeed = 3f * Time.deltaTime;
