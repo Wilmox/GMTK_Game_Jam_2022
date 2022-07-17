@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     {
         //SceneManager.LoadScene("Name");
         SceneManager.LoadScene("World Building");
+        
     }    
 
     public void QuitGame()
