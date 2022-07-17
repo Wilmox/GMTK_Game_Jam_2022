@@ -131,6 +131,8 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+    private Collider collider;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -196,6 +198,8 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
+
+        collider = gameObject.GetComponent<Collider>();
     }
 
     float camRotation;
@@ -537,6 +541,12 @@ public class FirstPersonController : MonoBehaviour
                     dice.GetComponent<Rigidbody>().AddForceAtPosition((HitInfo.point - playerCamera.transform.position) * 2, HitInfo.point, ForceMode.Impulse);
                 }
             }
+        }
+    }
+
+    private void OnCollisionEnter (Collision collision) {
+        if (collision.gameObject.tag == "Dice") {
+            Physics.IgnoreCollision(collision.collider, collider);
         }
     }
 }

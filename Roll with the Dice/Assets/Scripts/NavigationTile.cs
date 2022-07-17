@@ -7,6 +7,7 @@ public class NavigationTile : MonoBehaviour
     public string tileName = "Undefined name";
     public List<NavigationTile> nextTiles;
     public NavigationTileType navigationTileType = NavigationTileType.Random;
+    public Color color;
     protected Collider col;
 
     protected Material mat;
@@ -30,7 +31,7 @@ public class NavigationTile : MonoBehaviour
     }
 
     public void EnableSelection(bool enable = true) {
-        col.enabled = enable;
+        //col.enabled = enable;
         mat.SetInt("_Selectable", enable?1:0);
     }
 
@@ -39,6 +40,8 @@ public class NavigationTile : MonoBehaviour
             navigationTileType = (NavigationTileType)Random.Range(0, System.Enum.GetValues(typeof(NavigationTileType)).Length - 2);
         }
         mat.SetTexture("_TileIcon", GameData.navigationTileIcons[(int)navigationTileType]);
+        Debug.Log("Setcolor");
+        mat.SetColor("_Color", color);
     }
 }
 

@@ -19,5 +19,6 @@ public abstract class NavigationTileCustom : NavigationTile
             navigationTileType = NavigationTileType.Custom;
         }
         mat.SetTexture("_TileIcon", navigationTileIcon);
+        mat.SetColor("_Color", color);
     }
 }
