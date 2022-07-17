@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
+        navigationController.endReachedCallback = OnEndReached;
         StartTurn();
     }
 
@@ -60,5 +62,15 @@ public class GameManager : MonoBehaviour
 
     public void AddMoves() {
         navigationController.AddMoves(diceResult, ReCollectDice);
+    }
+
+    public void OnEndReached() {
+        LoadScoreBoard();
+    }
+
+    public void LoadScoreBoard() {
+        Time.timeScale = 1f;
+        Debug.Log("Loading scoreboard");
+        SceneManager.LoadScene("EndScreen");
     }
 }

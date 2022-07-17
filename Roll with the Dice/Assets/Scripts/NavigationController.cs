@@ -17,6 +17,9 @@ public class NavigationController : MonoBehaviour
     public delegate void OutOfMovesCallback();
     public OutOfMovesCallback outOfMovesCallback;
 
+    public delegate void EndReachedCallback();
+    public EndReachedCallback endReachedCallback;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +116,7 @@ public class NavigationController : MonoBehaviour
 
     private void EndOfPathState() {
         Debug.Log("This is the end");
+        endReachedCallback?.Invoke();
     }
 
     private void EnableNextTileSelection(bool enable = true) {
@@ -123,7 +127,7 @@ public class NavigationController : MonoBehaviour
     } 
 
     private void MovePlayer() {
-        player.transform.position = Vector3.Lerp(player.transform.position, goToPosition, 3f * Time.deltaTime);
+        player.transform.position = Vector3.Lerp(player.transform.position, goToPosition, 100f * Time.deltaTime);
     }
 
     private void CheckIfPlayerReachedTile() {
