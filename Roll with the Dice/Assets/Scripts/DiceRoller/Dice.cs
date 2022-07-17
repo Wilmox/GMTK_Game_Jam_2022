@@ -10,6 +10,9 @@ public class Dice : MonoBehaviour
     public int result;
     public float rerollTimer = -1f;
     public static float maxRollTime = 5f;
+
+    public delegate void DiceMovedCallback();
+    public DiceMovedCallback diceMovedCallback;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +27,13 @@ public class Dice : MonoBehaviour
             if (Vector3.Distance(rigy.velocity, Vector3.zero) <= .01f && rerollTimer >= 0) {
                 result = GetDiceResult();
             } else if (rerollTimer >= maxRollTime) {
-                Roll();
+                Roll(diceMovedCallback);
             }
         }
     }
 
-    public void Roll(float forceStrength = 5, float torqueStrength = 2) {
+    public void Roll(DiceMovedCallback callback, float forceStrength = 5, float torqueStrength = 2) {
+        diceMovedCallback = callback;
         rigy.constraints = RigidbodyConstraints.None;
         Vector3 forceImpulse = new Vector3(Random.Range(-1f, 1f), Random.Range(.5f, 1f), Random.Range(-1f, 1f)) * forceStrength;
         Vector3 torqueImpulse = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * torqueStrength;
@@ -45,6 +49,7 @@ public class Dice : MonoBehaviour
 
     public void ApplyForce(Vector3 force) {
         rigy.AddForce(force);
+        diceMovedCallback();
     }
 
     public int GetDiceResult() {
