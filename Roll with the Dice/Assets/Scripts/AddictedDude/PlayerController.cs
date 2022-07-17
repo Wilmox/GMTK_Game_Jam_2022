@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     //public Slider addictionBar;
     public Image addictionBar;
     float addictionLevel, maxAddictionLevel = 100f;
-    float moneyCountValue = 500;
+    public float moneyCountValue = 500;
     float maxMoneyCount = 1000;
     
     public Text moneyCountText;

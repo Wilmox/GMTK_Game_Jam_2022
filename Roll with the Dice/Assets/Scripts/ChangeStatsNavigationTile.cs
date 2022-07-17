@@ -11,7 +11,8 @@ public class ChangeStatsNavigationTile : NavigationTileCustom
 
     public override void CustomEvent()
     {
-        playerController.increaseMoneyCount(moneyChange);
+        Debug.Log(moneyChange);
+        playerController.moneyCountValue += moneyChange;
         playerController.happiness += happinessChange;
     }
 }

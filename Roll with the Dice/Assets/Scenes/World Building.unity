@@ -30604,6 +30604,7 @@ MonoBehaviour:
   happinessMeter: {fileID: 167239244}
   endScreenHappiness: {fileID: 1075885006}
   addictionBar: {fileID: 408019015}
+  moneyCountValue: 500
   moneyCountText: {fileID: 416175494}
   endScreenText: {fileID: 1698616267}
 --- !u!114 &1299707874
@@ -44612,7 +44613,7 @@ MonoBehaviour:
   tileName: Use food dispenser
   nextTiles:
   - {fileID: 505738191}
-  navigationTileType: 4
+  navigationTileType: 5
   color: {r: 0.8962264, g: 0.04650232, b: 0.19092833, a: 0}
   navigationTileIcon: {fileID: 2800000, guid: a04db9b1cc3e18f45aebc1ec074f437c, type: 3}
   playerController: {fileID: 1299707873}
