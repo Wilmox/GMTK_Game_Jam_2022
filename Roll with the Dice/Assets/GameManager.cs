@@ -15,14 +15,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            StartGame();
+        }
     }
 
     public void StartGame() {
-
+        StartTurn();
     }
 
     public void StartTurn() {
+        diceRoller.RollDices(DiceResultCallback);
+    }
+
+    public void DiceResultCallback(int result) {
+        Debug.Log(result);
+        StartTimer();
     }
 
     public void StartTimer() {

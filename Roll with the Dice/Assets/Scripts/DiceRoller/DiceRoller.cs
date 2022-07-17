@@ -12,6 +12,8 @@ public class DiceRoller : MonoBehaviour
     public float sphereSize = 10;
     // Start is called before the first frame update
     
+    public delegate void DiceResultCallback(int result);
+    public DiceResultCallback diceResultCallback;
     void Start()
     {
         for (int i = 0; i < diceCount; i++)
@@ -31,17 +33,18 @@ public class DiceRoller : MonoBehaviour
                 {
                     total += dice.result;
                 }
-                Debug.Log(total);
+                diceResultCallback(total);
                 resulted = true;
             }
         }
     }
 
-    public void RollDices() {
+    public void RollDices(DiceResultCallback callback) {
+        diceResultCallback = callback;
         resulted = false;
         foreach (var dice in dices)
         {
-            dice.Roll();
+            dice.Roll(DiceMovedCallback);
         }
     }
 
@@ -55,5 +58,9 @@ public class DiceRoller : MonoBehaviour
                 dice.FreezePosition();
             }
         }
+    }
+
+    public void DiceMovedCallback() {
+        resulted = false;
     }
 }
