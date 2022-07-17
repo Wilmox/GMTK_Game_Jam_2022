@@ -24,11 +24,14 @@ public class TimerController : MonoBehaviour
     {
         timeCounter.text = "Time: 00:00.00";
         timerGoing = false;
+        instance.BeginTimer();
     }
 
     public void BeginTimer()
     {
+        Debug.Log("Start Timer?");
         timerGoing = true;
+        Debug.Log(timerGoing);
         elapsedTime = 0f;
 
         StartCoroutine(UpdateTimer());
@@ -43,6 +46,7 @@ public class TimerController : MonoBehaviour
     {
         while (timerGoing)
         {
+            Debug.Log(timerGoing);
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
@@ -50,5 +54,10 @@ public class TimerController : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void Update()
+    {
+        Debug.Log(timerGoing + ", " + elapsedTime + ", ");
     }
 }

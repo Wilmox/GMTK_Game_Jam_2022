@@ -9,7 +9,6 @@ public class Countdown : MonoBehaviour {
     public Image timerBar;
 
     float elapsedTime = 0f;
-    float lerpSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +19,6 @@ public class Countdown : MonoBehaviour {
 	void Update () {
         elapsedTime += Time.deltaTime;
 
-        lerpSpeed = Time.deltaTime;
         timerBar.fillAmount = 1 - (elapsedTime / countTime);
 	}
 }

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimerController.instance.BeginTimer();
+        //TimerController.instance.BeginTimer();
         addictionLevel = maxAddictionLevel;
         moneyCountValue = maxMoneyCount;
         
