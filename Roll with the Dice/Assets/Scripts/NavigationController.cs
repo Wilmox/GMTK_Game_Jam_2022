@@ -135,7 +135,7 @@ public class NavigationController : MonoBehaviour
     public void SetCurrentTile(NavigationTile navigationTile) {
         EnableNextTileSelection(false);
         currentTile = navigationTile;
-        goToPosition = currentTile.gameObject.transform.position + Vector3.up;
+        goToPosition = currentTile.gameObject.transform.position;
     }
 
     public void SelectNextTile(NavigationTile navigationTile) {

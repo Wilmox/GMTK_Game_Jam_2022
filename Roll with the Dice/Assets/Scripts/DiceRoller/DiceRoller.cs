@@ -45,9 +45,10 @@ public class DiceRoller : MonoBehaviour
 
         if (recollect && !recolected) {
             ReCollectDice();
-            if (dices.TrueForAll(d => d.transform.position.y < transform.position.y)) {
+            if (dices.TrueForAll(d => d.transform.position.y > transform.position.y)) {
                 recolected = true;
                 recollect = false;
+                diceRecollectCallback?.Invoke();
             }
         }
     }
