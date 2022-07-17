@@ -549,7 +549,7 @@ public class FirstPersonController : MonoBehaviour
             if (hitObject.TryGetComponent<Dice>(out Dice dice)) {
                 if (Input.GetKeyDown(KeyCode.Mouse0)) {
                     dice.ApplyForceAtPosition((HitInfo.point - playerCamera.transform.position) * 2, HitInfo.point);
-                    dice.diceMovedCallback();
+                    dice.diceMovedCallback?.Invoke();
                 }
             }
         }

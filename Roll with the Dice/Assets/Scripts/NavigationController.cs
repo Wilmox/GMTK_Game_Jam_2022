@@ -14,6 +14,9 @@ public class NavigationController : MonoBehaviour
 
     public NavigationState navigationState = NavigationState.Init;
 
+    public delegate void OutOfMovesCallback();
+    public OutOfMovesCallback outOfMovesCallback;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,8 +104,13 @@ public class NavigationController : MonoBehaviour
     }
 
     private void OutOfMovesState() {
+        Debug.Log("OutOfMovesState");
         if (moves > 0) {
             navigationState = NavigationState.ReachedTile;
+        } else {
+            Debug.Log("no");
+            outOfMovesCallback?.Invoke();
+            outOfMovesCallback = null;
         }
     }
 
@@ -144,6 +152,11 @@ public class NavigationController : MonoBehaviour
         } else if(moves > 0) {
             navigationState = NavigationState.HandlingEvent;
         }
+    }
+
+    public void AddMoves(int amount, OutOfMovesCallback callback) {
+        outOfMovesCallback = callback;
+        moves += amount;
     }
 }
 
