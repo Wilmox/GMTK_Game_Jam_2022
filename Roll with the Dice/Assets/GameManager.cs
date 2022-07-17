@@ -71,6 +71,6 @@ public class GameManager : MonoBehaviour
     public void LoadScoreBoard() {
         Time.timeScale = 1f;
         Debug.Log("Loading scoreboard");
-        SceneManager.LoadScene("EndScreen");
+        SceneManager.LoadScene("EndSceen");
     }
 }
