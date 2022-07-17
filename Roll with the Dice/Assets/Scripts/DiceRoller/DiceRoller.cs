@@ -55,7 +55,8 @@ public class DiceRoller : MonoBehaviour
     public void ReCollectDice() {
         foreach (var dice in dices)
         {
-            if (Vector3.Distance(dice.transform.position, transform.position) > 4) {
+            if (dice.transform.position.y < transform.position.y) {
+                Debug.Log(dice.transform.position.y + " >= " + transform.position.y);
                 dice.ApplyForce((transform.position - dice.transform.position) * Time.deltaTime * 200);
             } else {
                 dice.FreezePosition();
