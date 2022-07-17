@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float AddictionPercentage = 100f;
     public float money = 100f;
+    public float happiness = 0f;
     //public Slider addictionBar;
     public Image addictionBar;
     float addictionLevel, maxAddictionLevel = 100f;
