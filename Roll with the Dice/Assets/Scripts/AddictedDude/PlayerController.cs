@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         moneyCountText.text = moneyCountValue.ToString();
         endScreenText.text = moneyCountValue.ToString();
         happinessMeter.text = happiness.ToString();
+        endScreenHappiness.text = happiness.ToString();
         if (addictionLevel > maxAddictionLevel) addictionLevel = maxAddictionLevel;
 
         lerpSpeed = 3f * Time.deltaTime;
