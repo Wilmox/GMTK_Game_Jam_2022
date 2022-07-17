@@ -87,7 +87,6 @@ public class NavigationController : MonoBehaviour
     private void HandlingEventState() {
         tileEventHandler.HandleEvent(currentTile);
         if (navigationState == NavigationState.HandlingEvent) {
-            Debug.Log("Test");
             navigationState = NavigationState.ContinueMoving;
         }
     }
@@ -104,11 +103,9 @@ public class NavigationController : MonoBehaviour
     }
 
     private void OutOfMovesState() {
-        Debug.Log("OutOfMovesState");
         if (moves > 0) {
             navigationState = NavigationState.ReachedTile;
         } else {
-            Debug.Log("no");
             outOfMovesCallback?.Invoke();
             outOfMovesCallback = null;
         }
@@ -138,7 +135,7 @@ public class NavigationController : MonoBehaviour
     public void SetCurrentTile(NavigationTile navigationTile) {
         EnableNextTileSelection(false);
         currentTile = navigationTile;
-        goToPosition = currentTile.gameObject.transform.position + Vector3.up;
+        goToPosition = currentTile.gameObject.transform.position;
     }
 
     public void SelectNextTile(NavigationTile navigationTile) {
