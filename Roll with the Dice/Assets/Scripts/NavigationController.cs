@@ -87,7 +87,6 @@ public class NavigationController : MonoBehaviour
     private void HandlingEventState() {
         tileEventHandler.HandleEvent(currentTile);
         if (navigationState == NavigationState.HandlingEvent) {
-            Debug.Log("Test");
             navigationState = NavigationState.ContinueMoving;
         }
     }
@@ -104,11 +103,9 @@ public class NavigationController : MonoBehaviour
     }
 
     private void OutOfMovesState() {
-        Debug.Log("OutOfMovesState");
         if (moves > 0) {
             navigationState = NavigationState.ReachedTile;
         } else {
-            Debug.Log("no");
             outOfMovesCallback?.Invoke();
             outOfMovesCallback = null;
         }

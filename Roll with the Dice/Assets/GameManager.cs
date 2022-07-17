@@ -27,13 +27,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
-        Debug.Log("STartturn");
         StartTurn();
-        StartTimer();
     }
 
     public void StartTurn() {
         diceRoller.RollDices(DiceResultCallback);
+        StartTimer();
     }
 
     public void DiceResultCallback(int result) {
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
 
     public void StartTimer() {
         countdown.Restart(OnTimerEnd);
-        countdown.paused = false;
     }
 
     public void OnTimerEnd() {
