@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject gameUI;
 
+    public GameObject endScreen;
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (GameIsPaused) {
@@ -19,7 +21,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void Pause() {
+    public void Pause() {
         pauseMenuUI.SetActive(true);
         //gameUI.SetActive(false);
         Time.timeScale = 0f;
@@ -37,6 +39,12 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Debug.Log("Loading Menu...");
         SceneManager.LoadScene("Menu");
+    }
+
+    public void LoadScoreBoard() {
+        Debug.Log("Loading scoreboard");
+        endScreen.SetActive(true);
+
     }
 
     public void QuitGame()

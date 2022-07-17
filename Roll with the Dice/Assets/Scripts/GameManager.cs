@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     public Text diceText;
 
+    public GameObject endScreen;
+    public GameObject pauseMenuUI;
+    public GameObject gameUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +73,25 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadScoreBoard() {
-        Time.timeScale = 1f;
         Debug.Log("Loading scoreboard");
-        SceneManager.LoadScene("EndSceen");
+        
+        endScreen.SetActive(true);
+        PauseMenu.GameIsPaused = true;
+        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(false);
+        gameUI.SetActive(false);
+        
+
+    }
+
+    public void LoadMainMenu() {
+        //gameUI.SetActive(true);
+        
+        endScreen.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        gameUI.SetActive(false);
+        
+        SceneManager.LoadScene("Menu");
+        
     }
 }
