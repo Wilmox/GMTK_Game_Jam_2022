@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float AddictionPercentage = 100f;
     public float money = 100f;
     public float happiness = 0f;
+    public Text happinessMeter;
+    public Text endScreenHappiness;
     //public Slider addictionBar;
     public Image addictionBar;
     float addictionLevel, maxAddictionLevel = 100f;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         moneyCountText.text = moneyCountValue.ToString();
         endScreenText.text = moneyCountValue.ToString();
+        happinessMeter.text = happiness.ToString();
         if (addictionLevel > maxAddictionLevel) addictionLevel = maxAddictionLevel;
 
         lerpSpeed = 3f * Time.deltaTime;
