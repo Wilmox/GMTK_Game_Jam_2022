@@ -11676,7 +11676,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nextTiles.Array.data[0]
       value: 
-      objectReference: {fileID: 2047859309}
+      objectReference: {fileID: 2047859312}
     - target: {fileID: 8103486339256062801, guid: 10868f00e0ad70b4bb14b00edf853749,
         type: 3}
       propertyPath: m_Name
@@ -40187,7 +40187,7 @@ MonoBehaviour:
   navigationTileType: 5
   color: {r: 0.9811321, g: 0.8243451, b: 0, a: 0}
   navigationTileIcon: {fileID: 2800000, guid: b24451e013cf36f45a84dd44ff350740, type: 3}
-  goToNavigationTile: {fileID: 2047859309}
+  goToNavigationTile: {fileID: 2047859312}
 --- !u!1 &1706723332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8103486339256062801, guid: 821374f81adc31c44a0887461132b65a,
@@ -41238,7 +41238,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nextTiles.Array.data[0]
       value: 
-      objectReference: {fileID: 1238987776}
+      objectReference: {fileID: 1870665181}
     - target: {fileID: 8103486339256062801, guid: 10868f00e0ad70b4bb14b00edf853749,
         type: 3}
       propertyPath: m_Name
@@ -47723,7 +47723,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1995850223}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2047859309
+--- !u!114 &2047859312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47732,16 +47732,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1706723332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e3e7ece2f612449bea0fb5089af8fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 76379de713f14ab43b600fe47e7fa1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: Undefined name
   nextTiles:
   - {fileID: 1499294297}
   navigationTileType: 5
-  color: {r: 1, g: 0.8798679, b: 0, a: 0}
+  color: {r: 1, g: 0.87843144, b: 0, a: 0}
   navigationTileIcon: {fileID: 2800000, guid: b24451e013cf36f45a84dd44ff350740, type: 3}
-  goToNavigationTile: {fileID: 1705406902}
+  playerController: {fileID: 1299707873}
+  moneyChange: 0
+  happinessChange: 0
 --- !u!4 &2053922559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4447610635323297041, guid: a23516df878edcc46a89ecb744eb261f,
@@ -48803,6 +48805,7 @@ MonoBehaviour:
   moves: 0
   goToPosition: {x: 0, y: 0, z: 0}
   navigationState: 0
+  hasHandledEvent: 0
 --- !u!114 &2096607399
 MonoBehaviour:
   m_ObjectHideFlags: 0

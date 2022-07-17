@@ -28,6 +28,7 @@ public class Countdown : MonoBehaviour {
 
 			timerBar.fillAmount = 1 - (elapsedTime / countTime);
 			if (elapsedTime >= countTime) {
+				Debug.Log("test");
 				timeUpCallback?.Invoke();
 				paused = true;
 			}

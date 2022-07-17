@@ -19,6 +19,7 @@ public class NavigationController : MonoBehaviour
 
     public delegate void EndReachedCallback();
     public EndReachedCallback endReachedCallback;
+    public bool hasHandledEvent = false;
 
     // Start is called before the first frame update
     void Start()
@@ -88,10 +89,9 @@ public class NavigationController : MonoBehaviour
     }
 
     private void HandlingEventState() {
+        hasHandledEvent = true;
         tileEventHandler.HandleEvent(currentTile);
-        if (navigationState == NavigationState.HandlingEvent) {
-            navigationState = NavigationState.ContinueMoving;
-        }
+        navigationState = NavigationState.OutOfMoves;
     }
 
     private void ContinueMovingState() {
@@ -127,7 +127,7 @@ public class NavigationController : MonoBehaviour
     } 
 
     private void MovePlayer() {
-        player.transform.position = Vector3.Lerp(player.transform.position, goToPosition, 100f * Time.deltaTime);
+        player.transform.position = Vector3.Lerp(player.transform.position, goToPosition, 3f * Time.deltaTime);
     }
 
     private void CheckIfPlayerReachedTile() {
@@ -149,9 +149,9 @@ public class NavigationController : MonoBehaviour
 
     public void OnPlayerReachedTile() {
         if (moves == 0) {
-            navigationState = NavigationState.OutOfMoves;
-        } else if(moves > 0) {
             navigationState = NavigationState.HandlingEvent;
+        } else if(moves > 0) {
+            navigationState = NavigationState.ContinueMoving;
         }
     }
 
