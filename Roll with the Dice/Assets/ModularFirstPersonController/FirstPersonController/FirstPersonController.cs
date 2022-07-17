@@ -470,8 +470,18 @@ public class FirstPersonController : MonoBehaviour
         // Adds force to the player rigidbody to jump
         if (isGrounded)
         {
-            rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
-            isGrounded = false;
+            Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
+            Vector3 direction = transform.TransformDirection(Vector3.down);
+            float distance = .75f;
+            if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+            {
+                if (hit.collider.gameObject.tag == "Jumpboost") {
+                    rb.AddForce(Vector3.up * jumpPower * 4, ForceMode.Impulse);
+                } else {
+                    rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+                    isGrounded = false;
+                }
+            }
         }
 
         // When crouched and using toggle system, will uncrouch for a jump
