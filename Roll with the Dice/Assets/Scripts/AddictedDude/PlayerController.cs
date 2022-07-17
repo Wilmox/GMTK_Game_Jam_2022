@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         //TimerController.instance.BeginTimer();
         addictionLevel = maxAddictionLevel;
-        moneyCountValue = maxMoneyCount;
+        moneyCountValue = maxMoneyCount/2;
         
         ColorUtility.TryParseHtmlString("#711CFD", out startColor);
     }
