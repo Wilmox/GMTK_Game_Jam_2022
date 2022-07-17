@@ -40,7 +40,6 @@ public class NavigationTile : MonoBehaviour
             navigationTileType = (NavigationTileType)Random.Range(0, System.Enum.GetValues(typeof(NavigationTileType)).Length - 2);
         }
         mat.SetTexture("_TileIcon", GameData.navigationTileIcons[(int)navigationTileType]);
-        Debug.Log("Setcolor");
         mat.SetColor("_Color", color);
     }
 }

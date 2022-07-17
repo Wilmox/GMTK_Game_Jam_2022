@@ -52,7 +52,6 @@ public class DiceRoller : MonoBehaviour
         foreach (var dice in dices)
         {
             if (dice.transform.position.y < transform.position.y) {
-                Debug.Log(dice.transform.position.y + " >= " + transform.position.y);
                 dice.ApplyForce((transform.position - dice.transform.position) * Time.deltaTime * 200);
             } else {
                 dice.FreezePosition();

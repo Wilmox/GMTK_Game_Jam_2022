@@ -26312,8 +26312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099f6424a6b1b6f4ab00bd3a68627711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countTime: 60
+  countTime: 20
   timerBar: {fileID: 1295333392}
+  elapsedTime: 0
+  paused: 1
 --- !u!114 &1299707875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40396,7 +40398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63150f90fc898344d83df497fc29c3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceRoller: {fileID: 0}
+  diceRoller: {fileID: 1984509847}
+  playerController: {fileID: 1299707873}
+  countdown: {fileID: 1299707874}
+  navigationController: {fileID: 2096607398}
+  diceResult: 0
 --- !u!114 &1984509847
 MonoBehaviour:
   m_ObjectHideFlags: 0

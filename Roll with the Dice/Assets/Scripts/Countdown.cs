@@ -37,5 +37,6 @@ public class Countdown : MonoBehaviour {
 	public void Restart(TimeUpCallback callback) {
 		timeUpCallback = callback;
 		elapsedTime = 0;
+		paused = false;
 	}
 }
