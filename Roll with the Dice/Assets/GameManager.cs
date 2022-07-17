@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         diceResult = result;
     }
 
+    public void OnDiceRecollected() {
+        diceRoller.recollect = false;
+
+    }
+
     public void StartTimer() {
         countdown.Restart(OnTimerEnd);
     }
@@ -47,7 +52,11 @@ public class GameManager : MonoBehaviour
         AddMoves();
     }
 
+    public void ReCollectDice() {
+        diceRoller.StartRecollectingDice(OnDiceRecollected);
+    }
+
     public void AddMoves() {
-        navigationController.AddMoves(diceResult, StartTurn);
+        navigationController.AddMoves(diceResult, ReCollectDice);
     }
 }

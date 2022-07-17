@@ -10,10 +10,15 @@ public class DiceRoller : MonoBehaviour
     public List<Dice> dices;
     public bool resulted = true;
     public float sphereSize = 10;
+    public bool recollect = false;
+    public bool recolected;
     // Start is called before the first frame update
     
     public delegate void DiceResultCallback(int result);
     public DiceResultCallback diceResultCallback;
+
+    public delegate void DiceRecollectCallback();
+    public DiceRecollectCallback diceRecollectCallback;
     void Start()
     {
         for (int i = 0; i < diceCount; i++)
@@ -37,6 +42,14 @@ public class DiceRoller : MonoBehaviour
                 resulted = true;
             }
         }
+
+        if (recollect && !recolected) {
+            ReCollectDice();
+            if (dices.TrueForAll(d => d.transform.position.y < transform.position.y)) {
+                recolected = true;
+                recollect = false;
+            }
+        }
     }
 
     public void RollDices(DiceResultCallback callback) {
@@ -57,6 +70,12 @@ public class DiceRoller : MonoBehaviour
                 dice.FreezePosition();
             }
         }
+    }
+
+    public void StartRecollectingDice(DiceRecollectCallback callback) {
+        diceRecollectCallback = callback;
+        recolected = false;
+        recollect = true;
     }
 
     public void DiceMovedCallback() {
