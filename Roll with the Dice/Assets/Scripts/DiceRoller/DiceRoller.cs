@@ -9,28 +9,21 @@ public class DiceRoller : MonoBehaviour
     public GameObject diceObject;
     public List<Dice> dices;
     public bool resulted = true;
-    public float sphereSice = 10;
+    public float sphereSize = 10;
     // Start is called before the first frame update
+    
     void Start()
     {
         for (int i = 0; i < diceCount; i++)
         {
 
-            dices.Add(Instantiate(diceObject, transform.position + Random.insideUnitSphere * sphereSice, transform.rotation).GetComponent<Dice>());
+            dices.Add(Instantiate(diceObject, transform.position + Random.insideUnitSphere * sphereSize, transform.rotation).GetComponent<Dice>());
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            RollDices();
-        }
-
-        if (Input.GetKey(KeyCode.R)) {
-            ReCollectDice();
-        }
-
         if (!resulted) {
             if (dices.TrueForAll(d => d.resulted)) {
                 int total = 0;

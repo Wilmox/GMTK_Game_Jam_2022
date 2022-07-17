@@ -131,7 +131,7 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
-    private Collider collider;
+    private Collider col;
 
     private void Awake()
     {
@@ -199,7 +199,7 @@ public class FirstPersonController : MonoBehaviour
 
         #endregion
 
-        collider = gameObject.GetComponent<Collider>();
+        col = gameObject.GetComponent<Collider>();
     }
 
     float camRotation;
@@ -556,7 +556,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void OnCollisionEnter (Collision collision) {
         if (collision.gameObject.tag == "Dice") {
-            Physics.IgnoreCollision(collision.collider, collider);
+            Physics.IgnoreCollision(collision.collider, col);
         }
     }
 }
