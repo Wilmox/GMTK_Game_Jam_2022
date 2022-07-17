@@ -40,7 +40,7 @@ public class Dice : MonoBehaviour
         rigy.AddForce(forceImpulse, ForceMode.Impulse);
         rigy.AddTorque(torqueImpulse, ForceMode.Impulse);
         resulted = false;
-        rerollTimer = -1f;
+        ResetRerollTimer();
     }
 
     public void FreezePosition() {
@@ -50,6 +50,14 @@ public class Dice : MonoBehaviour
     public void ApplyForce(Vector3 force) {
         rigy.AddForce(force);
         diceMovedCallback();
+        ResetRerollTimer();
+    }
+
+    public void ApplyForceAtPosition(Vector3 force, Vector3 point) {
+        rigy.AddForceAtPosition(force, point, ForceMode.Impulse);
+        resulted = false;
+        diceMovedCallback();
+        ResetRerollTimer();
     }
 
     public int GetDiceResult() {
@@ -63,5 +71,9 @@ public class Dice : MonoBehaviour
 
         resulted = true;
         return highestIndex + 1;
+    }
+
+    public void ResetRerollTimer() {
+        rerollTimer = -1f;
     }
 }

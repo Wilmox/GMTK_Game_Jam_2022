@@ -548,7 +548,8 @@ public class FirstPersonController : MonoBehaviour
             GameObject hitObject = HitInfo.collider.gameObject;
             if (hitObject.TryGetComponent<Dice>(out Dice dice)) {
                 if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                    dice.GetComponent<Rigidbody>().AddForceAtPosition((HitInfo.point - playerCamera.transform.position) * 2, HitInfo.point, ForceMode.Impulse);
+                    dice.ApplyForceAtPosition((HitInfo.point - playerCamera.transform.position) * 2, HitInfo.point);
+                    dice.diceMovedCallback();
                 }
             }
         }
