@@ -33,7 +33,7 @@ public class DiceRoller : MonoBehaviour
                 {
                     total += dice.result;
                 }
-                diceResultCallback(total);
+                diceResultCallback?.Invoke(total);;
                 resulted = true;
             }
         }

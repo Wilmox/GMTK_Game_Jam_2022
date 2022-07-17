@@ -49,14 +49,14 @@ public class Dice : MonoBehaviour
 
     public void ApplyForce(Vector3 force) {
         rigy.AddForce(force);
-        diceMovedCallback();
+        diceMovedCallback?.Invoke();
         ResetRerollTimer();
     }
 
     public void ApplyForceAtPosition(Vector3 force, Vector3 point) {
         rigy.AddForceAtPosition(force, point, ForceMode.Impulse);
         resulted = false;
-        diceMovedCallback();
+        diceMovedCallback?.Invoke();
         ResetRerollTimer();
     }
 

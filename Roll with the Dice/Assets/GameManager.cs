@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public DiceRoller diceRoller;
+    public PlayerController playerController;
+
+    public Countdown countdown;
+    public NavigationController navigationController;
+
+    public int diceResult = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
+        Debug.Log("STartturn");
         StartTurn();
+        StartTimer();
     }
 
     public void StartTurn() {
@@ -29,11 +37,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void DiceResultCallback(int result) {
-        Debug.Log(result);
-        StartTimer();
+        diceResult = result;
     }
 
     public void StartTimer() {
+        countdown.Restart(OnTimerEnd);
+        countdown.paused = false;
+    }
 
+    public void OnTimerEnd() {
+        AddMoves();
+    }
+
+    public void AddMoves() {
+        navigationController.AddMoves(diceResult, StartTurn);
     }
 }
